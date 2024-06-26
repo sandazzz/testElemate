@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { getCurrentWeather } from '@/services/getData'
-import type { ApiResponse } from '@/models/apiResponse'
+import type { CurrentWeather } from '@/models/apiResponseType'
+import DataContainer from '@/components/DataContainer.vue'
 import { ref } from 'vue'
 
-const data = ref<ApiResponse | null>(null)
+const data = ref<CurrentWeather | null>(null)
 const cityname = ref<string>('')
 
 const handleSubmit = async (event: Event) => {
@@ -13,22 +14,18 @@ const handleSubmit = async (event: Event) => {
 </script>
 
 <template>
-  <form @submit="handleSubmit">
-    <input type="text" placeholder="City" v-model="cityname" />
-    <button type="submit">Submit</button>
-  </form>
-  <main>
-    <h1>Find the temperature of a city</h1>
+  <main class="container py-5">
+    <h1 class="text-center mb-4">Find the temperature of a city</h1>
 
-    <p v-if="data && data.location && data.current">
-      Name: {{ data.location.name }}<br />
-      Temperature: {{ data.current.temperature }}°C <br />
-      Description du temps :
-      {{ data.current.weather_descriptions }}
-      <img :src="data.current.weather_icons[0]" alt="Weather icon" />
-      <br />
-      <a href="">Détail</a>
-    </p>
-    <p v-else>No data available</p>
+    <form @submit="handleSubmit" class="container mb-4">
+      <div class="mb-3">
+        <input class="form-control" type="text" placeholder="Type a city" v-model="cityname" />
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary" type="submit">Submit</button>
+      </div>
+    </form>
+
+    <DataContainer :data="data" />
   </main>
 </template>

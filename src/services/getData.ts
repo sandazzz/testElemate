@@ -1,15 +1,16 @@
-import type { ApiResponse } from '@/models/apiResponse'
+import type { CurrentWeather } from '@/models/apiResponseType'
 
-export function getCurrentWeather(name: string): Promise<ApiResponse | null> {
+export function getCurrentWeather(name: string): Promise<CurrentWeather | null> {
   const apiKey = import.meta.env.VITE_API_WEATHER_KEY
-
-  return fetch(`http://api.weatherstack.com/current?access_key=${apiKey}&query=${name}`)
+  const data = fetch(`http://api.weatherstack.com/current?access_key=${apiKey}&query=${name}`)
     .then((response) => response.json())
     .then((json) => {
-      return json as ApiResponse
+      console.log(json)
+      return json as CurrentWeather
     })
     .catch((error) => {
       console.error('Erreur lors du fetch:', error)
       return null
     })
+  return data
 }
