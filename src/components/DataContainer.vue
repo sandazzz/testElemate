@@ -14,7 +14,11 @@ defineProps<{ data: CurrentWeather | null }>()
       <br />
 
       <router-link
-        :to="{ name: 'detailed-page', params: { name: data.location.name } }"
+        :to="{
+          name: 'detailed-page',
+          params: { name: data.location.name },
+          query: { data: JSON.stringify(data) }
+        }"
         class="btn btn-link mt-3"
       >
         Plus de détail
