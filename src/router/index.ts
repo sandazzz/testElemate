@@ -13,8 +13,7 @@ const router = createRouter({
     {
       path: '/detailed-page/:name',
       name: 'detailed-page',
-      component: DetailedPage,
-      props: (route) => ({ data: route.query.data })
+      component: DetailedPage
     }
   ]
 })
