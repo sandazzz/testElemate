@@ -1,4 +1,4 @@
-import type { CurrentWeather } from '@/models/apiResponseType'
+import type { CurrentWeather } from '@/models/type'
 
 export function getCurrentWeather(name: string): Promise<CurrentWeather | null> {
   const apiKey = import.meta.env.VITE_API_WEATHER_KEY
