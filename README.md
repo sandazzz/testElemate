@@ -14,10 +14,14 @@ TypeScript cannot handle type information for `.vue` imports by default, so we r
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+## Project Setup (you can use npm or pnpm)
 
 ```sh
 pnpm install
+create a file '.env' at the root
+create the variable : "VITE_API_WEATHER_KEY"
+add my free api key :'VITE_API_WEATHER_KEY="8329d87b8de7d18b002374c6210f3197"'
+
 ```
 
 ### Compile and Hot-Reload for Development
