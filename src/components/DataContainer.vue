@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CurrentWeather } from '@/models/type'
 
+//Creation d'une props nommé data qui a pour type CurrentWeather ou null
 defineProps<{ data: CurrentWeather | null }>()
 </script>
 

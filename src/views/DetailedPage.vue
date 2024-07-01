@@ -2,10 +2,16 @@
 import { useWeatherStore } from '@/services/stores/weather'
 import { useRouter } from 'vue-router'
 
+// Initialiser le routeur
 const router = useRouter()
+
+// Initialiser le store de météo
 const weather = useWeatherStore()
+
+// Récupérer les données météorologiques depuis le store
 const data = weather.dataweather
 
+//S'il n'y a rien dans le store on retourne à la Home Page
 if (data == null) {
   router.push('/')
 }
